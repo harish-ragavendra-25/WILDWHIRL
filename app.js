@@ -26,28 +26,23 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname,"public")));
 
 const campgroundRoutes = require("./routes/campgrounds");
+const reviewRoutes = require('./routes/reviews');
 
 app.use("/campgrounds",campgroundRoutes);
+app.use("/campgrounds/:id/reviews",reviewRoutes);
 
 app.get("/", (req, res) => {
   res.render('home');
 });
-
-
-
-
-
-
-
-
 
 app.all('*',(req,re,next) => {
   next(new ExpressError());
 })
 
 app.use((err,req,res,next) => {
-  const {statusCode = 500,errorMessage = 'page not found' } = err;
-  res.status(statusCode).send(errorMessage);
+  const {statusCode = 500 } = err;
+  if(!err.message) err.message = 'oh no! something went wrong';
+  res.status(statusCode).render("error",{ err });
 })
 
 app.listen(PORT, () => {

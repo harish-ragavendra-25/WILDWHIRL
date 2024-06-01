@@ -1,4 +1,5 @@
 const campgroundModel = require('../models/campground');
+const reviewModel = require('../models/review');
 
 module.exports.index = async(req,res) => {
       const campgrounds = await campgroundModel.find();
@@ -16,7 +17,8 @@ module.exports.renderForm = (req,res) => {
 }
 
 module.exports.showCampground = async(req,res) => {
-    const campground = await campgroundModel.findById(req.params.id);
+    const campground = await campgroundModel.findById(req.params.id).populate('reviews');
+    console.log(campground);
     if(!campground)
     {
       res.send('campground not found');
