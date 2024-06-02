@@ -53,8 +53,10 @@ const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/userRoutes');
 
 app.use((req,res,next) => {
+  res.locals.currentUser = req.user;
   res.locals.sucess = req.flash('sucess');
   res.locals.error = req.flash('error');
+  console.log(req.session);
   next();
 })
 

@@ -4,17 +4,19 @@ const campgroundModel = require('../models/campground');
 const catchAsync = require('../utilities/catchAsync');
 const campgrounds = require('../controllers/campground');
 
+const {isLoggedIn} = require('../middleware');
+
 router.route('/')
     .get(catchAsync(campgrounds.index))
-    .post(catchAsync(campgrounds.createCampground));
+    .post(isLoggedIn,catchAsync(campgrounds.createCampground));
 
-router.get('/new',campgrounds.renderForm);
+router.get('/new',isLoggedIn,campgrounds.renderForm);
 
 router.route('/:id')
     .get(catchAsync(campgrounds.showCampground))
-    .put(catchAsync(campgrounds.updateCampground))
-    .delete(catchAsync(campgrounds.deleteCampground));
+    .put(isLoggedIn,catchAsync(campgrounds.updateCampground))
+    .delete(isLoggedIn,catchAsync(campgrounds.deleteCampground));
 
-router.get('/:id/edit',catchAsync(campgrounds.renderEditForm));
+router.get('/:id/edit',isLoggedIn,catchAsync(campgrounds.renderEditForm));
 
 module.exports = router;
