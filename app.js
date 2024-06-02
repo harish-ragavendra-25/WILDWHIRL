@@ -8,6 +8,10 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
 const ExpressError = require('./utilities/ExpressError');
+const userModel = require('./models/user');
+
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 
 mongoose.connect("mongodb://localhost:27017/wild-whirl")
 const db = mongoose.connection;
@@ -37,9 +41,16 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(userModel.authenticate()));
+
+passport.serializeUser(userModel.serializeUser());
+passport.deserializeUser(userModel.deserializeUser());
 
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require('./routes/reviews');
+const userRoutes = require('./routes/userRoutes');
 
 app.use((req,res,next) => {
   res.locals.sucess = req.flash('sucess');
@@ -47,6 +58,7 @@ app.use((req,res,next) => {
   next();
 })
 
+app.use("/",userRoutes);
 app.use("/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/reviews",reviewRoutes);
 
