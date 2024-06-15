@@ -8,7 +8,10 @@ const campGroundSchema = new mongoose.Schema({
   price: Number,
   description: String,
   location: String,
-  author: String,
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'userModel'
+  },
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,
