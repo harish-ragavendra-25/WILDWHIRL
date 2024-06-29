@@ -23,8 +23,20 @@ const seedDB = async() => {
         author: "666d3433f91f73484e4fd50f",
         location: `${cities[random1000].city}, ${cities[random1000].state}`,
         title: `${sample(descriptors)} ${sample(places)}`,
-        image:
-          "https://images.unsplash.com/photo-1515444744559-7be63e1600de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNhbXBncm91bmRzfGVufDB8fDB8fHww",
+        image: [
+          {
+            url: "https://res.cloudinary.com/dhknjqigy/image/upload/v1719581591/wildWhirl/rinryariscnefjjo8pxb.avif",
+            filename: "wildWhirl/rinryariscnefjjo8pxb"
+          },
+          {
+            url: "https://res.cloudinary.com/dhknjqigy/image/upload/v1719581591/wildWhirl/dhxkrv4kke9r3buzpo9j.avif",
+            filename: "wildWhirl/dhxkrv4kke9r3buzpo9j"
+          },
+          {
+            url: "https://res.cloudinary.com/dhknjqigy/image/upload/v1719581591/wildWhirl/jrf3ynmnmdqmjxbpaixe.avif",
+            filename: "wildWhirl/jrf3ynmnmdqmjxbpaixe"
+          }
+        ],
         description:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam dolores vero perferendis laudantium, consequuntur voluptatibus nulla architecto, sit soluta esse iure sed labore ipsam a cum nihil atque molestiae deserunt!",
         price,

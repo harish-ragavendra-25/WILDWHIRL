@@ -1,6 +1,7 @@
 const path = require('path');
 const campgroundModel = require('../models/campground');
 const reviewModel = require('../models/review');
+const campground = require('../models/campground');
 
 module.exports.index = async(req,res) => {
       const campgrounds = await campgroundModel.find();
@@ -10,6 +11,7 @@ module.exports.index = async(req,res) => {
 module.exports.createCampground = async(req,res) => {
     const campground = new campgroundModel(req.body.campground);
     campground.author = req.user._id;
+    campground.image = req.files.map(f => ({url : f.path, filename: f.filename}));
     await campground.save();
     req.flash('sucess',"campground created!!");
     res.redirect("/campgrounds");
@@ -38,8 +40,14 @@ module.exports.showCampground = async(req,res) => {
 module.exports.updateCampground = async(req,res) => {
     const { id } = req.params;
     const update_campground = await campgroundModel.findByIdAndUpdate(id,{...req.body.campground});
+    const imgs = req.files.map((f) => ({
+      url: f.path,
+      filename: f.filename,
+    }));
+    update_campground.image.push(...imgs);
+    await update_campground.save();
     req.flash('sucess','campground updated');
-    res.redirect(`/campgrounds/${campground._id}`);
+    res.redirect(`/campgrounds/${update_campground._id}`);
 }
 
 module.exports.deleteCampground = async(req,res) => {
