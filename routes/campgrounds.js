@@ -1,20 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const campgroundModel = require('../models/campground');
 const catchAsync = require('../utilities/catchAsync');
 const campgrounds = require('../controllers/campground');
+const multer = require('multer');
+const { storage } = require('../cloudinary');
+const upload = multer({ storage });
 
-const {isLoggedIn,isAuthor} = require('../middleware');
+const {isLoggedIn,isAuthor, validateCampground} = require('../middleware');
 
-router.route('/')
-    .get(catchAsync(campgrounds.index))
-    .post(isLoggedIn,catchAsync(campgrounds.createCampground));
+router
+  .route("/")
+  .get(catchAsync(campgrounds.index))
+  .post(
+    isLoggedIn,
+    upload.array("image"),
+    validateCampground,
+    catchAsync(campgrounds.createCampground)
+  );
 
 router.get('/new',isLoggedIn,campgrounds.renderForm);
 
 router.route('/:id')
     .get(catchAsync(campgrounds.showCampground))
-    .put(isLoggedIn,isAuthor,catchAsync(campgrounds.updateCampground))
+    .put(isLoggedIn,isAuthor,upload.array('image'),validateCampground,catchAsync(campgrounds.updateCampground))
     .delete(isLoggedIn,isAuthor,catchAsync(campgrounds.deleteCampground));
 
 router.get('/:id/edit',isLoggedIn,catchAsync(campgrounds.renderEditForm));

@@ -1,6 +1,7 @@
 const { campgroundSchema,reviewSchema } = require('./Schema');
 const reviewModel = require('./models/review');
 const ExpressError = require('./utilities/ExpressError');
+const campgroundModel = require('./models/campground')
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -54,8 +55,9 @@ module.exports.storeretrunTo = (req,res,next) => {
 }
 
 module.exports.isAuthor = async (req, res, next) => {
+  const { id } = req.params;
   const campground = await campgroundModel.findById(id);
-  if (!campground.author.equal(req.user._id)) {
+  if (!campground.author.equals(req.user._id)) {
     req.flash("error", "Not authorized to do that!!");
     return res.redirect(`/campgrounds/${campground._id}`);
   }

@@ -4,20 +4,25 @@ const reviewModel = require('./review');
 
 const campGroundSchema = new mongoose.Schema({
   title: String,
-  image: String,
+  image: [
+    {
+      url: String,
+      filename: String,
+    }
+  ],
   price: Number,
   description: String,
   location: String,
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'userModel'
+    ref: "userModel",
   },
   reviews: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "reviewModel"
-    }
-  ]
+      ref: "reviewModel",
+    },
+  ],
 });
 
 const campground = mongoose.model('campground',campGroundSchema);
