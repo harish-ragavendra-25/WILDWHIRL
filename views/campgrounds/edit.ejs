@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="/styles/edit.css" />
 <div class="row">
   <h1 class="text-center">Edit Campground</h1>
   <div class="col-6 offset-3">
@@ -61,7 +62,9 @@
           id="description"
           name="campground[description]"
           required
-        ><%= campground.description%></textarea>
+        >
+<%= campground.description%></textarea
+        >
         <div class="valid-feedback">Looks good!</div>
       </div>
 
@@ -85,9 +88,37 @@
       </div>
 
       <div class="mb-3">
-        <button class="btn btn-info">Update Campground</button>
+        <% campground.image.forEach(function(img, i) { %>
+        <div class="image-item">
+          <div class="d-flex align-items-center">
+            <input
+              type="checkbox"
+              id="image-<%= i %>"
+              class="form-check-input"
+              name="deleteImage[]"
+              value="<%= img.filename %>"
+            />
+            <label class="form-check-label" for="image-<%= i %>">Delete?</label>
+          </div>
+          <img
+            src="<%= img.thumbnail %>"
+            class="img-thumbnail"
+            alt="Image not found"
+          />
+        </div>
+        <% }) %>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-success">Update Campground</button>
       </div>
     </form>
-    <a href="/campgrounds/<%= campground._id%>">Back To Campground</a>
+
+    <div class="d-flex justify-content-end">
+      <div class="mb-3">
+        <a class="btn btn-outline-info rounded-pill p-2" role="button" href="/campgrounds/<%= campground._id%>"
+          ><img src="/assets/images/left-arrow.png" id="back_arrow">Back to campground</a>
+      </div>
+    </div>
   </div>
 </div>
