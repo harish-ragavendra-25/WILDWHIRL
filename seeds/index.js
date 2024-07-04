@@ -23,6 +23,10 @@ const seedDB = async() => {
         author: "666d3433f91f73484e4fd50f",
         location: `${cities[random1000].city}, ${cities[random1000].state}`,
         title: `${sample(descriptors)} ${sample(places)}`,
+        geometry:{
+          type:"Point",
+          coordinates: [-113.1331, 47.0202]
+        },
         image: [
           {
             url: "https://res.cloudinary.com/dhknjqigy/image/upload/v1719581591/wildWhirl/rinryariscnefjjo8pxb.avif",
