@@ -3,6 +3,8 @@ const reviewModel = require('./review');
 const { coordinates } = require('@maptiler/client');
 const { string, required } = require('joi');
 
+const opts = { toJSON: { virtuals:true }};
+
 const imageSchema = new mongoose.Schema({
   url: String,
   filename: String
@@ -39,6 +41,13 @@ const campGroundSchema = new mongoose.Schema({
       ref: "reviewModel",
     },
   ],
+},opts);
+
+campGroundSchema.virtual("properties.popUpMarkup").get(function () {
+  return `
+        <strong><a href="/campgrounds/${this._id}">${this.title}</a></strong>
+        <p>${this.description.substring(0,40)}...</p>
+  `;
 });
 
 const campground = mongoose.model('campground',campGroundSchema);

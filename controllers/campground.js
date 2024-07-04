@@ -11,7 +11,7 @@ module.exports.index = async(req,res) => {
       const campgrounds = await campgroundModel.find();
       res.render("campgrounds/index", { campgrounds });
 } 
-
+ 
 module.exports.createCampground = async(req,res) => {
     const geoData = await maptilerClient.geocoding.forward(
       req.body.campground.location,
