@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("https://images.unsplash.com/photo-1559521783-1d1599583485?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif;
+    color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.cover-container {
+    max-width: 60vw;
+    background: rgb(0, 0,0, 0.369);
+    border-radius: 10px;
+    padding: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+header h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+/* 
+.nav-link {
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+    font-size: 1rem;
+    transition: color 0.3s,border-bottom-color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: rgba(255, 255, 255, 1);
+    border-bottom-color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+
+.nav-link.active {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+} */
+
+.nav-link {
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 1rem;
+    border-bottom: 0.25rem solid transparent;
+    font-size: 1rem;
+    transition: color 0.3s, border-bottom-color 0.3s;    
+    position: relative;
+    /* Ensures proper stacking context for pseudo-element */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    /* Adjust as needed to position the underline */
+    left: 0;
+    width: 100%;
+    height: 1px;
+    /* Thickness of the underline */
+    background-color: rgba(255, 255, 255, 0.436);
+    transform: scaleX(0);
+    /* Initially hidden */
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+    /* Smooth animation */
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+    transform: scaleX(1);
+    /* Display underline on hover/focus */
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+
+
+main h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorShift 3s infinite alternate;
+}
+
+@keyframes colorShift {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 100%;
+    }
+}
+
+main p.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out 1s backwards;
+}
+
+.btn-secondary {
+    color: #333;
+    background-color: #ffffff;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #6c757d;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+footer {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 20px;
+    animation: fadeIn 2s ease-in-out 2s backwards;
+}
+
+/* Interactive Hover Effects */
+img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Scroll Animations */
+.scroll-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animation.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .cover-container {
+        max-width: 70vw;
+    }
+}
+
+@media (max-width: 992px) {
+    .cover-container {
+        max-width: 80vw;
+    }
+
+    main h1 {
+        font-size: 3rem;
+    }
+
+    main p.lead {
+        font-size: 1.125rem;
+    }
+
+    .nav-link {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header h3 {
+        font-size: 1.5rem;
+    }
+
+    main h1 {
+        font-size: 2.5rem;
+    }
+
+    main p.lead {
+        font-size: 1rem;
+    }
+
+    .btn-secondary {
+        font-size: 0.875rem;
+        padding: 8px 16px;
+    }
+
+    .cover-container {
+        max-width: 90vw;
+        padding: 10px;
+    }
+
+    .nav-link {
+        font-size: 0.875rem;
+        margin-left: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    header h3 {
+        font-size: 1.25rem;
+    }
+
+    main h1 {
+        font-size: 2rem;
+    }
+
+    main p.lead {
+        font-size: 0.875rem;
+    }
+
+    .btn-secondary {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+
+    .nav-link {
+        font-size: 0.75rem;
+        margin-left: 0.25rem;
+    }
+}
