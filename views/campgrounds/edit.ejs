@@ -3,35 +3,15 @@
 <div class="row">
   <h1 class="text-center">Edit Campground</h1>
   <div class="col-6 offset-3">
-    <form
-      action="/campgrounds/<%=campground._id%>?_method=PUT"
-      method="POST"
-      novalidate
-      class="validated-form"
-      enctype="multipart/form-data"
-    >
+    <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
-        <input
-          class="form-control"
-          type="text"
-          id="title"
-          name="campground[title]"
-          value="<%=campground.title %>"
-          required
-        />
+        <input class="form-control" type="text" id="title" name="campground[title]" value="<%=campground.title %>" required />
         <div class="valid-feedback">Looks good!</div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="location">Location</label>
-        <input
-          class="form-control"
-          type="text"
-          id="location"
-          name="campground[location]"
-          value="<%=campground.location %>"
-          required
-        />
+        <input class="form-control" type="text" id="location" name="campground[location]" value="<%=campground.location %>" required />
         <div class="valid-feedback">Looks good!</div>
       </div>
 
@@ -39,48 +19,23 @@
         <label class="form-label" for="price">Campground Price</label>
         <div class="input-group">
           <span class="input-group-text" id="price-label">$</span>
-          <input
-            type="text"
-            class="form-control"
-            id="price"
-            placeholder="0.00"
-            aria-label="price"
-            aria-describedby="price-label"
-            name="campground[price]"
-            value="<%=campground.price %>"
-            required
-          />
+          <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price" aria-describedby="price-label" name="campground[price]" value="<%=campground.price %>" required />
           <div class="valid-feedback">Looks good!</div>
         </div>
       </div>
 
       <div class="mb-3">
         <label class="form-label" for="description">Description</label>
-        <textarea
-          class="form-control"
-          type="text"
-          id="description"
-          name="campground[description]"
-          required
-        >
-<%= campground.description%></textarea
-        >
+        <textarea class="form-control" type="text" id="description" name="campground[description]" required>
+<%= campground.description%></textarea>
         <div class="valid-feedback">Looks good!</div>
       </div>
 
       <div class="mb-5 mt-5">
         <div class="mt-2 form-file custom-file">
-          <input
-            type="file"
-            name="image"
-            id="image"
-            class="form-file-input"
-            multiple
-          />
+          <input type="file" name="image" id="image" class="form-file-input" multiple />
           <label for="image" class="form-file-label">
-            <span class="form-file-text custom-file-label"
-              >Add more images...</span
-            >
+            <span class="form-file-text custom-file-label">Add more images...</span>
             <span class="form-file-button">Browse</span>
           </label>
           <div class="valid-feedback">Looks good!</div>
@@ -91,20 +46,10 @@
         <% campground.image.forEach(function(img, i) { %>
         <div class="image-item">
           <div class="d-flex align-items-center">
-            <input
-              type="checkbox"
-              id="image-<%= i %>"
-              class="form-check-input"
-              name="deleteImage[]"
-              value="<%= img.filename %>"
-            />
+            <input type="checkbox" id="image-<%= i %>" class="form-check-input" name="deleteImage[]" value="<%= img.filename %>" />
             <label class="form-check-label" for="image-<%= i %>">Delete?</label>
           </div>
-          <img
-            src="<%= img.thumbnail %>"
-            class="img-thumbnail"
-            alt="Image not found"
-          />
+          <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="Image not found" />
         </div>
         <% }) %>
       </div>
@@ -116,8 +61,7 @@
 
     <div class="d-flex justify-content-end">
       <div class="mb-3">
-        <a class="btn btn-outline-info rounded-pill p-2" role="button" href="/campgrounds/<%= campground._id%>"
-          ><img src="/assets/images/left-arrow.png" style="height: 1.5em;width: auto;vertical-align: middle;margin-right: 0.5em;" id="back_arrow">Back to campground</a>
+        <a class="btn btn-outline-info rounded-pill p-2" role="button" href="/campgrounds/<%= campground._id%>"><img src="/assets/images/left-arrow.png" id="back_arrow">Back to campground</a>
       </div>
     </div>
   </div>

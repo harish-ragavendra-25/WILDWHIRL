@@ -23,25 +23,17 @@ const seedDB = async() => {
         author: "666d3433f91f73484e4fd50f",
         location: `${cities[random1000].city}, ${cities[random1000].state}`,
         title: `${sample(descriptors)} ${sample(places)}`,
-        geometry:{
-          type:"Point",
+        geometry: {
+          type: "Point",
           coordinates: [
             cities[random1000].longitude,
-            cities[random1000].latitude
-        ]
+            cities[random1000].latitude,
+          ],
         },
         image: [
           {
-            url: "https://res.cloudinary.com/dhknjqigy/image/upload/v1719581591/wildWhirl/rinryariscnefjjo8pxb.avif",
-            filename: "wildWhirl/rinryariscnefjjo8pxb"
-          },
-          {
-            url: "https://res.cloudinary.com/dhknjqigy/image/upload/v1719581591/wildWhirl/dhxkrv4kke9r3buzpo9j.avif",
-            filename: "wildWhirl/dhxkrv4kke9r3buzpo9j"
-          },
-          {
-            url: "https://res.cloudinary.com/dhknjqigy/image/upload/v1719581591/wildWhirl/jrf3ynmnmdqmjxbpaixe.avif",
-            filename: "wildWhirl/jrf3ynmnmdqmjxbpaixe"
+            url: "https://res.cloudinary.com/dhknjqigy/image/upload/v1720342904/wildWhirl/dnru13xxzmh7n17sr4aq.avif",
+            filename: "wildWhirl/dnru13xxzmh7n17sr4aq"
           }
         ],
         description:
