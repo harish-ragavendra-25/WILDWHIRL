@@ -52,28 +52,6 @@ header h3 {
         transform: translateX(0);
     }
 }
-/* 
-.nav-link {
-    padding: 0.25rem 0;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.8);
-    margin-left: 1rem;
-    border-bottom: 0.25rem solid transparent;
-    font-size: 1rem;
-    transition: color 0.3s,border-bottom-color 0.3s;
-}
-
-.nav-link:hover,
-.nav-link:focus {
-    color: rgba(255, 255, 255, 1);
-    border-bottom-color: rgba(255, 255, 255, 1);
-    text-decoration: none;
-}
-
-.nav-link.active {
-    color: #ffffff;
-    border-bottom-color: #ffffff;
-} */
 
 .nav-link {
     padding: 0.25rem 0;
