@@ -201,3 +201,166 @@ screen and (min-resolution: 192dpi) {
         display: none;
     }
 }
+
+/* styles */
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Flexbox for main row */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Column styles */
+.col-6 {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 10px;
+}
+
+/* Adjust columns for medium and larger screens */
+@media (min-width: 768px) {
+  .col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* Map styles */
+#map {
+  height: 300px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  #map {
+    height: 400px;
+  }
+}
+
+/* Carousel styles */
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  border-radius: 5px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Card styles */
+.card {
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1em;
+}
+
+.card-footer {
+  font-size: 0.85em;
+  text-align: right;
+}
+
+/* List group styles */
+.list-group-item {
+  font-size: 0.95em;
+}
+
+/* Button styles */
+.btn {
+  border-radius: 5px;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+/* Review form styles */
+form.validated-form {
+  margin-bottom: 20px;
+}
+
+form.validated-form .form-label {
+  font-size: 1em;
+}
+
+form.validated-form .form-control {
+  border-radius: 5px;
+}
+
+/* Review card styles */
+.card.mb-3 {
+  margin-bottom: 30px;
+}
+
+/* Responsive text alignment for small screens */
+@media (max-width: 767px) {
+  .card-footer,
+  .card-subtitle {
+    text-align: left;
+  }
+}
+
+/* Spacing adjustments */
+.mt-2 {
+  margin-top: 10px;
+}
+
+.mb-2 {
+  margin-bottom: 10px;
+}
+
+.p-2 {
+  padding: 10px;
+}
+
+.rounded {
+  border-radius: 5px;
+}
+
+/* Fieldset styles (excluding star rating) */
+fieldset {
+  margin-bottom: 15px;
+}
+
+textarea.form-control {
+  resize: vertical;
+}
