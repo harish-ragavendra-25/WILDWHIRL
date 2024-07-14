@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV != 'production')
+if(process.env.NODE_ENV !== 'production')
 {
   require('dotenv').config();
 }
@@ -15,7 +15,6 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const ExpressError = require('./utilities/ExpressError');
 const userModel = require('./models/user');
-// const DB_URL = process.env.DB_URL;
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -23,7 +22,7 @@ const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
-const DB_URL = "mongodb://localhost:27017/wild-whirl";
+const DB_URL = process.env.DB_URL || "mongodb://localhost:27017/wild-whirl";
 
 mongoose.connect(DB_URL)
 const db = mongoose.connection;
@@ -45,6 +44,8 @@ app.use(
     contentSecurityPolicy: false,
   })
 );
+
+const secret = process.env.secret || 'thisshouldbebettersecret'
 
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
@@ -100,7 +101,7 @@ const store = MongoStore.create({
   mongoUrl: DB_URL,
   touchAfter: 24 * 60 * 60,
   crypto: {
-    secret: 'thisshouldbeabettersecret!'
+    secret
   }
 });
 
@@ -110,7 +111,7 @@ store.on("error",function(e){
 
 const sessionConfig = {
   store,
-  secret: "thisshouldbebettersecret",
+  secret: process.env.secret ||"thisshouldbebettersecret",
   resave: false,
   saveUninitialized: true,
   cookie: {
