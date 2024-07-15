@@ -4,7 +4,7 @@ const map = new maptilersdk.Map({
   container: "cluster-map",
   style: maptilersdk.MapStyle.DATAVIZ.DARK,
   center: [-103.59179687498357, 40.66995747013945],
-  zoom: 3,
+  zoom: 2,
 });
 
 map.on("load", function () {
@@ -13,7 +13,7 @@ map.on("load", function () {
     data: campgrounds,
     cluster: true,
     clusterMaxZoom: 14, // Max zoom to cluster points on
-    clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+    clusterRadius: 70, // Radius of each cluster when clustering points (defaults to 50)
   });
 
   map.addLayer({
