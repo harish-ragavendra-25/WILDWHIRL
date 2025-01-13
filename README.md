@@ -34,7 +34,10 @@
    ```
 
 ## Screenshots
-(Add images or links showcasing your app here.)
+![image](https://github.com/user-attachments/assets/73e53cf0-1d4b-43dd-b79b-e8df48af8439)
+![Screenshot from 2025-01-13 16-00-27](https://github.com/user-attachments/assets/6d8d25b6-00e9-45fa-a849-489583d8aaae)
+![image](https://github.com/user-attachments/assets/d061d7f7-d291-4f3b-977b-a93acdf3fca8)
+
 
 ## Future Enhancements
 - Add user authentication.
